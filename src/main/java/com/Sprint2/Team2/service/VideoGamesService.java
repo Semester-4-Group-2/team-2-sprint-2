@@ -19,4 +19,6 @@ public interface VideoGamesService {
 
 
     void deleteVideoGames(Long id);
+
+    public List<VideoGames> getByDevelopers(String developers);
 }

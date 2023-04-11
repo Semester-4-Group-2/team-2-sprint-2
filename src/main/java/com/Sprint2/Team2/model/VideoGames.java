@@ -57,4 +57,5 @@ public class VideoGames {
     public void setGenre(String genre) {
         this.genre = genre;
     }
+
 }
