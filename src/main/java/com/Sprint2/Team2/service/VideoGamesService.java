@@ -10,4 +10,13 @@ public interface VideoGamesService {
     public List<VideoGames> getAllVideoGames();
 
     public VideoGames getById(Long id);
+
+    public VideoGames getByName(String name);
+
+    public List<VideoGames> getByGenre(String genre);
+
+    public VideoGames updateVideoGames(VideoGames videoGames);
+
+
+    void deleteVideoGames(Long id);
 }

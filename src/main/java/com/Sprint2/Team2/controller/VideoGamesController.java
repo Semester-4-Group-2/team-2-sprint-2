@@ -24,10 +24,31 @@ public class VideoGamesController {
         return videoGamesService.getAllVideoGames();
     }
 
-    @GetMapping("/getById/{id}")
-    public VideoGames getById(@PathVariable Long id){
-        return videoGamesService.getById(id);
+    @GetMapping("/getByName/{name}")
+    public VideoGames getByName(@PathVariable String name){
+        return videoGamesService.getByName(name);
     }
 
+    @GetMapping("/getByGenre/{genre}")
+    public List<VideoGames> getByGenre(@PathVariable String genre){
+        return videoGamesService.getByGenre(genre);
+    }
+
+    @PutMapping("/update/{id}")
+    public String update(@PathVariable Long id, @RequestBody VideoGames videoGames){
+        VideoGames videoGamesToUpdate = videoGamesService.getById(id);
+        videoGamesToUpdate.setName(videoGames.getName());
+        videoGamesToUpdate.setPlatforms(videoGames.getPlatforms());
+        videoGamesToUpdate.setDevelopers(videoGames.getDevelopers());
+        videoGamesToUpdate.setGenre(videoGames.getGenre());
+        videoGamesService.saveVideoGames(videoGamesToUpdate);
+        return "Game updated";
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public String delete(@PathVariable Long id) {
+        videoGamesService.deleteVideoGames(id);
+        return "Game deleted";
+    }
 
 }
