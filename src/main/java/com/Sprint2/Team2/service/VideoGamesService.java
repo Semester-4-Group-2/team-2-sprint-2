@@ -21,4 +21,6 @@ public interface VideoGamesService {
     public VideoGames updateVideoGames(VideoGames videoGames);
 
     void deleteVideoGames(Long id);
+
+    public List<VideoGames> getByDevelopers(String developers);
 }

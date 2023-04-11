@@ -69,5 +69,10 @@ public class VideoGamesImplementation implements VideoGamesService{
         videoGamesRepository.deleteById(id);
     }
 
+    @Override
+    public List<VideoGames> getByDevelopers(String developers) {
+        return videoGamesRepository.getByDevelopers(developers);
+    }
+
 
 }

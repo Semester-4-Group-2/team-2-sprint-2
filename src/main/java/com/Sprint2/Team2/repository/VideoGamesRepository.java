@@ -16,6 +16,8 @@ public interface VideoGamesRepository extends JpaRepository<VideoGames, Long> {
 
     void deleteById(Long id);
 
+    public List<VideoGames> getByDevelopers(String developers);
+
 }
 
 

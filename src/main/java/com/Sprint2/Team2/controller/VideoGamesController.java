@@ -14,7 +14,7 @@ public class VideoGamesController {
     public VideoGamesService videoGamesService;
 
     @PostMapping("/add")
-    public String add(@RequestBody VideoGames videoGames){
+    public String add(@RequestBody VideoGames videoGames) {
         videoGamesService.saveVideoGames(videoGames);
         return "New game added";
     }
@@ -25,17 +25,17 @@ public class VideoGamesController {
     }
 
     @GetMapping("/getAll")
-    public List<VideoGames> getAllVideoGames(){
+    public List<VideoGames> getAllVideoGames() {
         return videoGamesService.getAllVideoGames();
     }
 
     @GetMapping("/getByName/{name}")
-    public VideoGames getByName(@PathVariable String name){
+    public VideoGames getByName(@PathVariable String name) {
         return videoGamesService.getByName(name);
     }
 
     @GetMapping("/getByGenre/{genre}")
-    public List<VideoGames> getByGenre(@PathVariable String genre){
+    public List<VideoGames> getByGenre(@PathVariable String genre) {
         return videoGamesService.getByGenre(genre);
     }
 
@@ -45,7 +45,7 @@ public class VideoGamesController {
     }
 
     @PutMapping("/update/{id}")
-    public String update(@PathVariable Long id, @RequestBody VideoGames videoGames){
+    public String update(@PathVariable Long id, @RequestBody VideoGames videoGames) {
         VideoGames videoGamesToUpdate = videoGamesService.getById(id);
         videoGamesToUpdate.setName(videoGames.getName());
         videoGamesToUpdate.setPlatforms(videoGames.getPlatforms());
@@ -61,4 +61,8 @@ public class VideoGamesController {
         return "Game deleted";
     }
 
+    @GetMapping ("/getByDevelopers/{developers}")
+    public List<VideoGames> getByDevelopers(@PathVariable String developers){
+        return videoGamesService.getByDevelopers(developers);
+    }
 }
