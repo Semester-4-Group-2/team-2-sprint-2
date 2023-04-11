@@ -21,4 +21,10 @@ public class VideoGamesImplementation implements VideoGamesService{
     public List<VideoGames> getAllVideoGames(){
         return videoGamesRepository.findAll();
     }
+
+    @Override
+    public VideoGames getById(Long id){
+        return videoGamesRepository.getById(id);
+    }
+
 }

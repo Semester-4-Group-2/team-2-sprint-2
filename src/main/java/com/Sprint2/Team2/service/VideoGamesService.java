@@ -8,4 +8,6 @@ import java.util.List;
 public interface VideoGamesService {
     public VideoGames saveVideoGames(VideoGames videoGames);
     public List<VideoGames> getAllVideoGames();
+
+    public VideoGames getById(Long id);
 }

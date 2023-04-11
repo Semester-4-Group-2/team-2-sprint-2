@@ -6,4 +6,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface VideoGamesRepository extends JpaRepository<VideoGames, Long> {
+    VideoGames getById(Long id);
+    
 }
