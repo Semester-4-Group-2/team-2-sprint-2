@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class VideoGamesImplementation {
+public class VideoGamesImplementation implements VideoGamesService{
     @Autowired
     private VideoGamesRepository videoGamesRepository;
 
