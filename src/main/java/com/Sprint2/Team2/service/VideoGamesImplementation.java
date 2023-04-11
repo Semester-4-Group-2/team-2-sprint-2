@@ -21,4 +21,31 @@ public class VideoGamesImplementation implements VideoGamesService{
     public List<VideoGames> getAllVideoGames(){
         return videoGamesRepository.findAll();
     }
+
+    @Override
+    public VideoGames getById(Long id){
+        return videoGamesRepository.getById(id);
+    }
+
+    @Override
+    public VideoGames getByName(String name){
+        return videoGamesRepository.findByName(name);
+    }
+
+    @Override
+    public List<VideoGames> getByGenre(String genre){
+        return videoGamesRepository.findByGenre(genre);
+    }
+
+    @Override
+    public VideoGames updateVideoGames(VideoGames videoGames){
+        return videoGamesRepository.save(videoGames);
+    }
+
+    @Override
+    public void deleteVideoGames(Long id) {
+        videoGamesRepository.deleteById(id);
+    }
+
+
 }
