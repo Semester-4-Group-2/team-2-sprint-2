@@ -19,6 +19,11 @@ public class VideoGamesController {
         return "New game added";
     }
 
+    @GetMapping("/getById/{id}")
+    public VideoGames getById(@PathVariable Long id){
+        return videoGamesService.getById(id);
+    }
+
     @GetMapping("/getAll")
     public List<VideoGames> getAllVideoGames(){
         return videoGamesService.getAllVideoGames();
@@ -32,6 +37,11 @@ public class VideoGamesController {
     @GetMapping("/getByGenre/{genre}")
     public List<VideoGames> getByGenre(@PathVariable String genre){
         return videoGamesService.getByGenre(genre);
+    }
+
+    @GetMapping("/getByPlatform")
+    public List<VideoGames> getByPlatform(@RequestParam(value = "platform") List<String> platforms){
+        return videoGamesService.getByPlatforms(platforms);
     }
 
     @PutMapping("/update/{id}")
