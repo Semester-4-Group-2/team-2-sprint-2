@@ -9,7 +9,7 @@ import java.util.List;
 @Repository
 public interface VideoGamesRepository extends JpaRepository<VideoGames, Long> {
     VideoGames getById(Long id);
-    VideoGames findByName(String name);
+    List<VideoGames> findByName(String name);
     List<VideoGames> findByGenre(String genre);
 
     List<VideoGames> findByPlatforms(String platform);

@@ -29,7 +29,7 @@ public class VideoGamesImplementation implements VideoGamesService{
     }
 
     @Override
-    public VideoGames getByName(String name){
+    public List<VideoGames> getByName(String name){
         return videoGamesRepository.findByName(name);
     }
 

@@ -12,7 +12,7 @@ public interface VideoGamesService {
 
     public VideoGames getById(Long id);
 
-    public VideoGames getByName(String name);
+    public List<VideoGames> getByName(String name);
 
     public List<VideoGames> getByGenre(String genre);
 

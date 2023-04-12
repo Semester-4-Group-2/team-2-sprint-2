@@ -31,7 +31,7 @@ public class VideoGamesController {
     }
 
     @GetMapping("/getByName/{name}")
-    public VideoGames getByName(@PathVariable String name) {
+    public List<VideoGames> getByName(@PathVariable String name) {
         return videoGamesService.getByName(name);
     }
 
