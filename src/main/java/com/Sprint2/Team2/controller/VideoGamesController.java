@@ -9,7 +9,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/videogames")
-@CrossOrigin
+@CrossOrigin // To tell SpringBoot to connect to React.
 public class VideoGamesController {
     @Autowired
     public VideoGamesService videoGamesService;
