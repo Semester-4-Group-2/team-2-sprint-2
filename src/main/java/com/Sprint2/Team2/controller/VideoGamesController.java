@@ -9,6 +9,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/videogames")
+@CrossOrigin
 public class VideoGamesController {
     @Autowired
     public VideoGamesService videoGamesService;
