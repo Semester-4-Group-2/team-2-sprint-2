@@ -16,7 +16,7 @@ public interface VideoGamesService {
 
     public List<VideoGames> getByGenre(String genre);
 
-    public List<VideoGames> getByPlatforms(List<String> platforms);
+    public List<VideoGames> getByPlatforms(String platforms);
 
     public VideoGames updateVideoGames(VideoGames videoGames);
 

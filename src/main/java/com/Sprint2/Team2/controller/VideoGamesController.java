@@ -40,11 +40,8 @@ public class VideoGamesController {
         return videoGamesService.getByGenre(genre);
     }
 
-    @GetMapping("/getByPlatform")
-    public List<VideoGames> getByPlatform(@RequestParam(value = "platform") List<String> platforms){
-        return videoGamesService.getByPlatforms(platforms);
-    }
-
+    @GetMapping("/getByPlatforms/{platforms}")
+    public List<VideoGames> getByPlatform(@PathVariable String platforms){return videoGamesService.getByPlatforms(platforms);}
     @PutMapping("/update/{id}")
     public String update(@PathVariable Long id, @RequestBody VideoGames videoGames) {
         VideoGames videoGamesToUpdate = videoGamesService.getById(id);

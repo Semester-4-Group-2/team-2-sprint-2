@@ -12,7 +12,7 @@ public interface VideoGamesRepository extends JpaRepository<VideoGames, Long> {
     List<VideoGames> findByName(String name);
     List<VideoGames> findByGenre(String genre);
 
-    List<VideoGames> findByPlatforms(String platform);
+    List<VideoGames> findByPlatforms(String platforms);
 
     void deleteById(Long id);
 

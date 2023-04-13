@@ -39,25 +39,8 @@ public class VideoGamesImplementation implements VideoGamesService{
     }
 
     @Override
-    public List<VideoGames> getByPlatforms(List<String> platforms) {
-        List<VideoGames> allGames = getAllVideoGames();
+    public List<VideoGames> getByPlatforms(String platforms){return videoGamesRepository.findByPlatforms(platforms);}
 
-        List<VideoGames> filteredGames = allGames.stream()
-                .filter(game -> {
-                    String[] gamePlatforms = game.getPlatforms().split(",\\s*");
-                    for (String platform : platforms) {
-                        for (String gamePlatform : gamePlatforms) {
-                            if (gamePlatform.equalsIgnoreCase(platform.trim())) {
-                                return true;
-                            }
-                        }
-                    }
-                    return false;
-                })
-                .collect(Collectors.toList());
-
-        return filteredGames;
-    }
 
     @Override
     public VideoGames updateVideoGames(VideoGames videoGames){
