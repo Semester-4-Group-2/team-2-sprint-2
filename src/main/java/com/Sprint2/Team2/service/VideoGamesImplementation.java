@@ -6,8 +6,8 @@ import org.apache.lucene.document.Field;
 import org.apache.lucene.document.TextField;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.Sprint2.Team2.model.VideoGames;
-import com.Sprint2.Team2.repository.VideoGamesRepository;
+//import com.Sprint2.Team2.model.VideoGames;
+//import com.Sprint2.Team2.repository.VideoGamesRepository;
 import org.apache.lucene.analysis.standard.StandardAnalyzer;
 import org.apache.lucene.document.Document;
 import org.apache.lucene.index.DirectoryReader;
@@ -20,8 +20,8 @@ import org.apache.lucene.search.ScoreDoc;
 import org.apache.lucene.search.TopDocs;
 import org.apache.lucene.store.Directory;
 import org.apache.lucene.store.RAMDirectory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+//import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.stereotype.Service;
 import org.apache.lucene.queryparser.classic.ParseException;
 
 import java.io.IOException;
@@ -29,8 +29,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class VideoGamesImplementation implements VideoGamesService{
@@ -56,7 +54,6 @@ public class VideoGamesImplementation implements VideoGamesService{
     @Override
     public List<VideoGames> getByName(String name) {
         List<VideoGames> videoGames = videoGamesRepository.findAll();
-        System.out.println("Total video games: " + videoGames.size());
         List<VideoGames> searchResults = new ArrayList<>();
 
         // Set up the analyzer, index, and writer.
@@ -73,12 +70,11 @@ public class VideoGamesImplementation implements VideoGamesService{
                 // Assuming you have a `name` field in your VideoGame class.
                 doc.add(new TextField("name", videoGame.getName(), Field.Store.YES));
                 writer.addDocument(doc);
-                System.out.println("Indexed: " + videoGame.getName()); // Add this line
             }
             writer.close();
 
             // Perform the fuzzy search.
-            Query query = new QueryParser("name", analyzer).parse(name + "~");
+            Query query = new QueryParser("name", analyzer).parse(name + "~1");
             DirectoryReader reader = DirectoryReader.open(index);
             IndexSearcher searcher = new IndexSearcher(reader);
             TopDocs docs = searcher.search(query, videoGames.size());
@@ -90,7 +86,6 @@ public class VideoGamesImplementation implements VideoGamesService{
                 // Assuming you have a method to find a video game by name.
                 VideoGames foundVideoGame = findVideoGameByName(foundName);
                 if (foundVideoGame != null) {
-                    System.out.println("Found: " + foundVideoGame.getName());
                     searchResults.add(foundVideoGame);
                 }
             }
@@ -102,10 +97,10 @@ public class VideoGamesImplementation implements VideoGamesService{
         return searchResults;
     }
 
-    private VideoGames findVideoGameByName(String foundName) {
-        return videoGamesRepository.findByName(foundName).orElse
-                (null);
+    private VideoGames findVideoGameByName(String name) {
+        return videoGamesRepository.findByName(name).orElse(null);
     }
+
 
     @Override
     public List<VideoGames> getByGenre(String genre){
